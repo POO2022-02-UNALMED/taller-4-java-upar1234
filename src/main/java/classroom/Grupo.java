@@ -1,41 +1,57 @@
 package classroom;
 
-public class Grupo {
+public class Asignatura {
 
-    Persona[] estudiantes;
-    Persona profesor;
-    Asignatura asignatura;
-    int codigo = 0;
-    String horario;
+    String nombre;
+    String n = nombre;
+    int codigoInterno;
+    int codigoExterno;
 
-    Grupo(Persona[] estudiantes, Persona profesor, Asignatura asignatura, int codigo, String horario) {
-        this.estudiantes = estudiantes;
-        this.profesor = profesor;
-        this.asignatura = asignatura;
-        this.codigo = codigo;
-        this.horario = horario;
+    Asignatura() {
+        this(0);
     }
 
-    Grupo(int cantidadEstudiantes, Persona profesor, Asignatura asignatura, int codigo, String horario) {
-        this(new Persona[cantidadEstudiantes], profesor, asignatura, codigo, horario);
+    Asignatura(double codigoInterno) {
+        this("Sin nombre", (int)codigoInterno, 0);
     }
 
-    Grupo(Persona[] estudiantes, Persona profesor, Asignatura asignatura) {
-        this.estudiantes = estudiantes;
-        this.profesor = profesor;
-        this.asignatura = asignatura;
+    Asignatura(int codigoExterno) {
+        this("Sin nombre", 0, codigoExterno);
     }
 
-    void cambiarEstudiante(Persona estudianteViejo, Persona estudianteNuevo) {
-        for (int i = 0; i < estudiantes.length; i++) {
-            if (estudiantes[i].getCedula() == estudianteViejo.getCedula()) {
-                estudiantes[i] = estudianteNuevo;
-                break;
-            }
-        }
+    Asignatura(String nombre) {
+        this(nombre, 0, 0);
+    }
+
+    Asignatura(String nombre, int codigoInterno, int codigoExterno) {
+        this.nombre = nombre;
+        this.codigoInterno = codigoInterno;
+        this.codigoExterno = codigoExterno;
+    }
+
+    void cambiarDatos(int codigoInterno, int codigoExterno, String nombre) {
+        this.codigoInterno = codigoInterno;
+        this.codigoExterno = codigoExterno;
+        this.nombre = nombre;
+    }
+
+    void cambiarDatos(double codigoInterno) {
+        this.codigoInterno = (int)codigoInterno;
+    }
+
+    void cambiarDatos(int codigoExterno) {
+        this.codigoExterno = codigoExterno;
+    }
+
+    void cambiarDatos(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setCodigoInterno(int codigoInterno) {
+        this.codigoInterno = codigoInterno;
     }
     
-    void cambiarEstudiante(int indice, Persona estudiante) {
-        estudiantes[indice] = estudiante;
+    public void setCodigoInterno(double codigoInterno) {
+        this.codigoInterno = (int) codigoInterno;
     }
 }
